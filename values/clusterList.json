@@ -1,0 +1,12 @@
+{
+    "name": "clusterList",
+    "value": [
+        {
+            "projectId": "5f2cfe92afe7a95ca8567259",
+            "clusterNames": [
+                "TestCluster"
+            ]
+        }
+    ],
+    "from_secret": false
+}
