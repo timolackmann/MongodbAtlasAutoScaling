@@ -1,0 +1,9 @@
+{
+    "name": "mongodb-atlas",
+    "type": "mongodb-atlas",
+    "config": {
+        "clusterName": "calendar",
+        "readPreference": "primary",
+        "wireProtocolEnabled": false
+    }
+}
