@@ -1,0 +1,7 @@
+{
+    "app_id": "autoscale-gpfla",
+    "config_version": 20210101,
+    "name": "autoScale",
+    "location": "DE-FF",
+    "deployment_model": "LOCAL"
+}
