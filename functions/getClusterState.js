@@ -6,5 +6,8 @@ exports = async function(projectId, clusterName){
   //get all processes by splitting the standard connection string
   const processes = returnBody.connectionStrings.standard.substring(returnBody.connectionStrings.standard.indexOf(":")+3,returnBody.connectionStrings.standard.indexOf("/?")).split(",");
 
-  return {"processes":processes,"paused":returnBody.paused};
+  const autoScaling = returnBody.replicationSpecs[0].regionConfigs[0].autoScaling.compute;
+  const currentSize = returnBody.replicationSpecs[0].regionConfigs[0].electableSpecs.instanceSize;
+  
+  return {"processes":processes,"paused":returnBody.paused,'scaleConfig':autoScaling, 'currentSize':currentSize};
 };
