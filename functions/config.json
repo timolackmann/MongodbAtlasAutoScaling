@@ -2,5 +2,9 @@
     {
         "name": "getApiTemplate",
         "private": true
+    },
+    {
+        "name": "getClusterState",
+        "private": true
     }
 ]
