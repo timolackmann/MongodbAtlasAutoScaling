@@ -10,5 +10,9 @@
     {
         "name": "getClusterState",
         "private": true
+    },
+    {
+        "name": "getMetrics",
+        "private": false
     }
 ]

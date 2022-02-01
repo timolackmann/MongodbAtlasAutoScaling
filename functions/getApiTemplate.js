@@ -1,4 +1,4 @@
-exports = function(purpose,projectId="",clusterName=""){
+exports = function(purpose,projectId="",clusterName="",process=""){
 
 
   // Get stored credentials...
@@ -11,8 +11,8 @@ exports = function(purpose,projectId="",clusterName=""){
     case 'clusterInfo':
       resourcePath = "api/atlas/v1.5/groups/"+ projectId + "/clusters/"+clusterName;
       break;
-    case 'userList':
-      resourcePath = "api/atlas/v1.0/groups/"+ projectId + "/databaseUsers";
+    case 'metrics':
+      resourcePath = "api/atlas/v1.0/groups/"+ projectId + "/processes/"+ process + "/measurements";
       break;
     case 'projectList':
       resourcePath = "api/atlas/v1.0/groups/";
