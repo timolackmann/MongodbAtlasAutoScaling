@@ -5,16 +5,25 @@ exports = async function(projectId, processes){
     var apiCall = await context.functions.execute('getApiTemplate','metrics',projectId,'', process=process);
     apiCall.query ={
       'period':['P0DT2H'],
-      'm':['SYSTEM_MEMORY_USED','MAX_PROCESS_NORMALIZED_CPU_USER'],
+      'm':['MAX_PROCESS_NORMALIZED_CPU_USER'],
       'granularity':['PT5M']
     }
     response = await context.http.get(apiCall);
     const returnBody = EJSON.parse(response.body.text());
     
-    for (var measurement of returnBody.measurements){
-      readings[process] = measurement;
+    readings[process] = {'CPU':returnBody.measurements[0].dataPoints.map(({ value }) => value)};
+  }
+  for (var process of processes){
+    var apiCall = await context.functions.execute('getApiTemplate','metrics',projectId,'', process=process);
+    apiCall.query ={
+      'period':['P0DT2H'],
+      'm':['SYSTEM_MEMORY_USED'],
+      'granularity':['PT5M']
     }
+    response = await context.http.get(apiCall);
+    const returnBody = EJSON.parse(response.body.text());
     
+    readings[process]['Memory'] = returnBody.measurements[0].dataPoints.map(({ value }) => value);
   }
   
   return readings;
