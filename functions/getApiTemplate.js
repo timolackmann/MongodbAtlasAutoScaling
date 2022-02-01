@@ -1,4 +1,4 @@
-exports = function(purpose,projectId=""){
+exports = function(purpose,projectId="",clusterName=""){
 
 
   // Get stored credentials...
@@ -8,8 +8,8 @@ exports = function(purpose,projectId=""){
   
   //build path based on purpose
   switch(purpose) {
-    case 'clusterList':
-      resourcePath = "api/atlas/v1.0/groups/"+ projectId + "/clusters";
+    case 'clusterInfo':
+      resourcePath = "api/atlas/v1.5/groups/"+ projectId + "/clusters/"+clusterName;
       break;
     case 'userList':
       resourcePath = "api/atlas/v1.0/groups/"+ projectId + "/databaseUsers";
