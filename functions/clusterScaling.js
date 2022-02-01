@@ -7,9 +7,9 @@ exports = async function(projectId, clusterName){
     return {'status':200, 'msg':'cluster is paused'}
   }
   
-  for (var process in clusterInfo.processes){
-    clusterInfo['metrics'][process] = await context.functions.execute('getMetrics',projectId,process);
-  }
+  clusterInfo['metrics'] = await context.functions.execute('getMetrics',projectId,clusterInfo.processes);
   
-  return clusterInfo.paused;
+  const cpuScaleDown = Math.max.apply(Math , clusterInfo.metrics['testcluster-shard-00-00.8o5sy.mongodb.net:27017'].CPU) < 60;
+  console.log('result ' + cpuScaleDown);
+  return clusterInfo;
 };
