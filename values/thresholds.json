@@ -1,0 +1,8 @@
+{
+    "from_secret": false,
+    "name": "thresholds",
+    "value": {
+        "CPU": 60,
+        "Memory": 40
+    }
+}

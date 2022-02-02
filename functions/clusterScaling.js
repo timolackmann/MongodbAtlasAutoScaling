@@ -1,15 +1,25 @@
 exports = async function(projectId, clusterName){
 
-  const clusterInfo = await context.functions.execute('getClusterState',projectId, clusterName=clusterName);
-  
+  const thresholds = context.values.get("thresholds");
+  const clusterInfo = await context.functions.execute('getClusterState',projectId, clusterName);
   //no further actions if cluster is paused
   if (clusterInfo.paused) {
     return {'status':200, 'msg':'cluster is paused'}
   }
   
-  clusterInfo['metrics'] = await context.functions.execute('getMetrics',projectId,clusterInfo.processes);
+  if (clusterInfo.currentSize.indexOf('M') == -1){
+    return {'status': 200, 'msg':'cluster is not a M size'}
+  }
   
-  const cpuScaleDown = Math.max.apply(Math , clusterInfo.metrics['testcluster-shard-00-00.8o5sy.mongodb.net:27017'].CPU) < 60;
-  console.log('result ' + cpuScaleDown);
+  clusterInfo.metrics = await context.functions.execute('getMetrics',projectId,clusterInfo.processes);
+  
+  let cpuScaleDown = [];
+  for (var process of clusterInfo.processes) {
+    cpuScaleDown.push(Math.max.apply(Math , clusterInfo.metrics[process].CPU) < thresholds.CPU);    
+  }
+  //Ensuring 
+  if (cpuScaleDown.every(Boolean) && clusterInfo.currentSize.replace(/[^0-9]/g,'') > 10 && clusterInfo.currentSize.replace(/[^0-9]/g,'') <= 80){
+    context.functions.execute('downscaleCluster',projectId,clusterName, clusterInfo);
+  }
   return clusterInfo;
 };
