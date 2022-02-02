@@ -14,8 +14,8 @@ exports = function(purpose,projectId="",clusterName="",process=""){
     case 'metrics':
       resourcePath = "api/atlas/v1.0/groups/"+ projectId + "/processes/"+ process + "/measurements";
       break;
-    case 'projectList':
-      resourcePath = "api/atlas/v1.0/groups/";
+    case 'clusterScale':
+      resourcePath = "api/atlas/v1.0/groups/"+projectId + "/clusters/"+clusterName;
       break;
     default:
       return {'err':'missing purpose'};

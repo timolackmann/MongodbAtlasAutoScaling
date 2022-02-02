@@ -1,4 +1,15 @@
 exports = async function(projectId,clusterName, clusterInfo){
+  
   const clusterList = context.values.get("clusterList");
-  return {arg: arg};
+  
+  //get the next smaller M-size
+  const smallerSize = clusterList[clusterList.indexOf(clusterInfo.currentSize)-1];
+  
+  let apiCall = await context.functions.execute('getApiTemplate','clusterScale',projectId, clusterName);
+  apiCall.body = '{"providerSettings":{"instanceSizeName": smallerSize}}';
+  response = await context.http.patch(apiCall);
+  console.log(response.status);
+  
+  
+  return true;
 };
