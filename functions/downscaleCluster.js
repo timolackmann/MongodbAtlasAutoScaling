@@ -6,8 +6,7 @@ exports = async function(projectId,clusterName, clusterInfo){
   const smallerSize = clusterList[clusterList.indexOf(clusterInfo.currentSize)-1];
   
   let apiCall = await context.functions.execute('getApiTemplate','clusterScale',projectId, clusterName);
-  apiCall.body = '{"providerSettings":{"providerName": "AWS","'+clusterInfo.providerName+'":"'+smallerSize +'"}}';
-  console.log(apiCall.body);
+  apiCall.body = '{"providerSettings":{"providerName": "'+clusterInfo.providerName+'","instanceSizeName":"'+smallerSize +'"}}';
   apiCall.headers = {"Content-Type":["application/json"]};
   response = await context.http.patch(apiCall);
 

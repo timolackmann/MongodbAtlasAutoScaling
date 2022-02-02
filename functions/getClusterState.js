@@ -14,6 +14,6 @@ exports = async function(projectId, clusterName){
     "paused":returnBody.paused,
     'scaleConfig':autoScaling, 
     'currentSize':currentSize, 
-    'providerName':returnBody.providerSettings.providerName
+    'providerName':returnBody.replicationSpecs[0].regionConfigs[0].providerName
   };
 };

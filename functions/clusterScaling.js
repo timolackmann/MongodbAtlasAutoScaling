@@ -19,7 +19,7 @@ exports = async function(projectId, clusterName){
   }
   //Ensuring 
   if (cpuScaleDown.every(Boolean) && clusterInfo.currentSize.replace(/[^0-9]/g,'') > 10 && clusterInfo.currentSize.replace(/[^0-9]/g,'') <= 80){
-    context.functions.execute('downscaleCluster',projectId,clusterName, clusterInfo);
+    result = await context.functions.execute('downscaleCluster',projectId,clusterName, clusterInfo);
   }
-  return clusterInfo;
+  return result;
 };

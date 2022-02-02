@@ -1,5 +1,13 @@
 [
     {
+        "name": "autoScaling",
+        "private": true
+    },
+    {
+        "name": "clusterScaling",
+        "private": true
+    },
+    {
         "name": "downscaleCluster",
         "private": false
     },
@@ -14,13 +22,5 @@
     {
         "name": "getMetrics",
         "private": false
-    },
-    {
-        "name": "clusterScaling",
-        "private": true
-    },
-    {
-        "name": "autoScaling",
-        "private": true
     }
 ]
