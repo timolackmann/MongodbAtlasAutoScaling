@@ -14,5 +14,9 @@
     {
         "name": "getMetrics",
         "private": false
+    },
+    {
+        "name": "downscaleCluster",
+        "private": false
     }
 ]
