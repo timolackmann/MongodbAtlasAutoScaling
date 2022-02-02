@@ -7,8 +7,9 @@ exports = async function(projectId,clusterName, clusterInfo){
   
   let apiCall = await context.functions.execute('getApiTemplate','clusterScale',projectId, clusterName);
   apiCall.body = '{"providerSettings":{"instanceSizeName": smallerSize}}';
+  apiCall.headers = {'Content-Type':'application/json'}
   response = await context.http.patch(apiCall);
-  console.log(response.status);
+  console.log(response);
   
   
   return true;

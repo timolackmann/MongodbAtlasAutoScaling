@@ -1,9 +1,5 @@
 [
     {
-        "name": "getApiTemplate",
-        "private": true
-    },
-    {
         "name": "getClusterState",
         "private": true
     },
@@ -18,5 +14,9 @@
     {
         "name": "downscaleCluster",
         "private": false
+    },
+    {
+        "name": "getApiTemplate",
+        "private": true
     }
 ]
