@@ -1,6 +1,6 @@
 exports = async function(projectId, clusterName){
 
-  const apiCall = await context.functions.execute('getApiTemplate','clusterInfo',projectId, clusterName=clusterName);
+  const apiCall = await context.functions.execute('getApiTemplate','clusterInfo',projectId, clusterName);
   response = await context.http.get(apiCall);
   const returnBody = EJSON.parse(response.body.text());
   //get all processes by splitting the standard connection string
@@ -9,5 +9,11 @@ exports = async function(projectId, clusterName){
   const autoScaling = returnBody.replicationSpecs[0].regionConfigs[0].autoScaling.compute;
   const currentSize = returnBody.replicationSpecs[0].regionConfigs[0].electableSpecs.instanceSize;
   
-  return {"processes":processes,"paused":returnBody.paused,'scaleConfig':autoScaling, 'currentSize':currentSize};
+  return {
+    "processes":processes,
+    "paused":returnBody.paused,
+    'scaleConfig':autoScaling, 
+    'currentSize':currentSize, 
+    'providerName':returnBody.providerSettings.providerName
+  };
 };
