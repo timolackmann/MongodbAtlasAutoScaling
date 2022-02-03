@@ -4,8 +4,8 @@ exports = async function(){
   let results = [];
   
   for (var project of clusterList){
-    for (var clusterName of project.clusterNames){
-      results.push(await context.functions.execute('clusterScaling',project.projectId, clusterName))
+    for (let clusterName of project.clusterNames){
+      results.push(await context.functions.execute('clusterScaling',project.projectId, clusterName));
     }
   }
   

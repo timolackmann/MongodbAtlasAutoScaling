@@ -1,5 +1,13 @@
 [
     {
+        "name": "getClusterState",
+        "private": true
+    },
+    {
+        "name": "getMetrics",
+        "private": false
+    },
+    {
         "name": "autoScaling",
         "private": true
     },
@@ -14,13 +22,5 @@
     {
         "name": "getApiTemplate",
         "private": true
-    },
-    {
-        "name": "getClusterState",
-        "private": true
-    },
-    {
-        "name": "getMetrics",
-        "private": false
     }
 ]

@@ -3,6 +3,6 @@
     "name": "thresholds",
     "value": {
         "CPU": 60,
-        "Memory": 40
+        "Memory": 60
     }
 }

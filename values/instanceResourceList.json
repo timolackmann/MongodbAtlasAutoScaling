@@ -1,0 +1,34 @@
+{
+    "from_secret": false,
+    "name": "instanceResourceList",
+    "value": {
+        "M10": {
+            "RAM": 2097152,
+            "unit": "kilobytes"
+        },
+        "M20": {
+            "RAM": 4194304,
+            "unit": "kilobytes"
+        },
+        "M30": {
+            "RAM": 8388608,
+            "unit": "kilobytes"
+        },
+        "M40": {
+            "RAM": 16777216,
+            "unit": "kilobytes"
+        },
+        "M50": {
+            "RAM": 33554432,
+            "unit": "kilobytes"
+        },
+        "M60": {
+            "RAM": 67108864,
+            "unit": "kilobytes"
+        },
+        "M80": {
+            "RAM": 134217728,
+            "unit": "kilobytes"
+        }
+    }
+}
